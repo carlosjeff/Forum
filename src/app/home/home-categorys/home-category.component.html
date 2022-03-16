@@ -1,0 +1,25 @@
+<div class="category"  *ngFor="let item of categorys">
+
+  <div class="category__icon" [ngStyle]="{'background-color': getColor(item.color)}">
+    <i class="pi pi-list icon"></i>
+  </div>
+
+  <div class="category__content">
+
+    <h2 class="category__name" [ngStyle]="{'color': getColor(item.color)}">{{item.name | uppercase}}</h2>
+
+    <div class="category__tags">
+      <div class="chip" *ngFor="let subItem of item.subcategory" [ngStyle]="{'border-color': getColor(item.color)}">
+        <p>{{subItem.name | titlecase}}</p>
+      </div>
+    </div>
+
+
+
+  </div>
+  <div class="category__topic">
+    	<p class="category__topic-number" [ngStyle]="{'color': getColor(item.color)}">{{item.topics}}</p>
+    	<p>Topicos</p>
+  </div>
+
+</div>
