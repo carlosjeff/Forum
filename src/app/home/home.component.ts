@@ -1,3 +1,4 @@
+import { TopicModel } from './../shared/model/topic-model';
 import { CategoryModel } from './../shared/model/category-model';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   categorys: CategoryModel[] = [];
+  topics: TopicModel[] = [];
 
   constructor() { }
 
@@ -67,6 +69,17 @@ export class HomeComponent implements OnInit {
         ]
       },
 
+    ]
+
+    this.topics = [
+      {
+        id: 1,
+        author: 'Carlos Jefferson Braga Alves',
+        date: new Date(),
+        name: 'Desenvolvimento de Software',
+        categorys: [],
+        replys: []
+      }
     ]
   }
 

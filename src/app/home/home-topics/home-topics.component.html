@@ -1,26 +1,42 @@
 <div class="topics">
   <div class="topics__filter">
 
-        <div class="p-inputgroup">
-            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <div class="p-inputgroup filter__input">
+            <span class="p-inputgroup-addon"><i class="pi pi-search"></i></span>
             <input type="text" pInputText placeholder="Username">
         </div>
 
+        <div class="p-inputgroup filter__category">
+            <span class="p-inputgroup-addon"><i class="pi pi-list"></i></span>
+            <p-dropdown [options]="categorysFilter" [(ngModel)]="categorySelect" optionLabel="name" [showClear]="true" placeholder="Select a Country">
+              <ng-template let-country pTemplate="item">
+                  <div class="country-item">
+                      <div>{{country.name}}</div>
+                  </div>
+              </ng-template>
+            </p-dropdown>
+        </div>
+
+        <div class="filter__buttonAdd">
+          <button pButton pRipple type="button" icon="pi pi-plus" label="Criar novo tópico" class="p-button-rounded"></button>
+        </div>
+
+
   </div>
-  <div class="topics__post">
+  <div class="topics__post" *ngFor="let topic of topics">
     <div class="topics__icon ">
-      <i class="pi pi-align-left icon"></i>
+      <i class="pi pi-comment icon"></i>
     </div>
     <div class="topics__content">
 
-      <h2 class="topics__name">Planejamento de um Projeto e BDD</h2>
-      <p class="topics__desc">Por Carlos Jefferson B. 16/03/2022 19:44</p>
+      <h2 class="topics__name">{{topic.name | uppercase}}</h2>
+      <p class="topics__desc">{{'Por' + (topic.author | titlecase) + ' ' + (topic.date | date)}}</p>
 
-      <div class="category__tags">
+      <div class="category__tags" >
 
-        <div class="chip">
+        <div class="chip" [ngStyle]="{'border-color': getColor(item.category?.color)}" *ngFor="let item of topic.categorys">
 
-          <p>teste</p>
+          <p>{{item.name}}</p>
 
         </div>
 
@@ -30,7 +46,14 @@
     </div>
     <div class="topcs__reply">
       <p class="topcs__reply-number" [ngStyle]="{'color': getColor('blue')}">10</p>
-    <p>Respostas</p>
+      <p>Respostas</p>
     </div>
+    <div class="topcs__lastReply">
+      <p class="topcs__lastReply-nome" [ngStyle]="{'color': getColor('blue')}">Jefferson Braga</p>
+      <p class="topcs__lastReply-time">Hoje às 11:12</p>
+    </div>
+  </div>
+  <div class="topics__pagination">
+    <p-paginator [rows]="10" [totalRecords]="120" [rowsPerPageOptions]="[10,20,30]"></p-paginator>
   </div>
 </div>

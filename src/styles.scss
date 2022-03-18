@@ -41,6 +41,17 @@ input{
   border: 1px solid var(--gray-300);
   border-top-right-radius: 30px !important;
   border-bottom-right-radius: 30px !important;
+  width: 100%;
+}
+
+
+.select{
+  min-height: 42px;
+  border: 1px solid var(--gray-300);
+  border-top-right-radius: 30px !important;
+  border-bottom-right-radius: 30px !important;
+  padding: 0 15px;
+  width: 100%;
 }
 
 
