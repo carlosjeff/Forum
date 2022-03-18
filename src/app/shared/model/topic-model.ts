@@ -1,11 +1,10 @@
-import { SubcategoryModel } from './subcategory-model';
-import { CategoryModel } from './category-model';
+import { TopicSubcategoryModel } from './topic-subcategory-model';
 export interface TopicModel {
   id?: number;
   name?: string;
   author?: string;
   date?: Date;
 
-  categorys?: SubcategoryModel[];
-  replys?: [];
+  subcategorys?: TopicSubcategoryModel[];
+  replys?: any[];
 }

@@ -24,19 +24,20 @@
 
   </div>
   <div class="topics__post" *ngFor="let topic of topics">
-    <div class="topics__icon ">
+    <div class="topics__icon "
+    [ngStyle]="{'background-color': getColor(nameColor(topic.subcategorys!))}">
       <i class="pi pi-comment icon"></i>
     </div>
     <div class="topics__content">
 
-      <h2 class="topics__name">{{topic.name | uppercase}}</h2>
-      <p class="topics__desc">{{'Por' + (topic.author | titlecase) + ' ' + (topic.date | date)}}</p>
+      <h2 class="topics__name">{{topic.name | titlecase}}</h2>
+      <p class="topics__desc">{{'Por ' + (topic.author | titlecase) + ' ' + (topic.date | date)}}</p>
 
       <div class="category__tags" >
 
-        <div class="chip" [ngStyle]="{'border-color': getColor(item.category?.color)}" *ngFor="let item of topic.categorys">
+        <div class="chip" [ngStyle]="{'border-color': getColor(item.subcategory?.category?.color)}" *ngFor="let item of topic.subcategorys">
 
-          <p>{{item.name}}</p>
+          <p>{{item.subcategory?.name}}</p>
 
         </div>
 

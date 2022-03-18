@@ -1,3 +1,4 @@
+import { DataService } from './../shared/service/data.service';
 import { TopicModel } from './../shared/model/topic-model';
 import { CategoryModel } from './../shared/model/category-model';
 import { Component, OnInit } from '@angular/core';
@@ -12,75 +13,85 @@ export class HomeComponent implements OnInit {
   categorys: CategoryModel[] = [];
   topics: TopicModel[] = [];
 
-  constructor() { }
+  constructor(private ds: DataService) { }
 
   ngOnInit(): void {
-    this.categorys = [
-      {
-        id: 1,
-        name: 'Mobile',
-        topics: 10,
-        color: 'blue',
-        subcategory: [
-          {
-            id: 1,
-            name: 'Jogos'
-          },
-          {
-            id: 2,
-            name: 'iOS'
-          },
-          {
-            id: 2,
-            name: 'Android'
-          },
-          {
-            id: 3,
-            name: 'React Native'
-          }
-        ]
-      },
-      {
-        id: 1,
-        name: 'Programação',
-        topics: 10,
-        color: 'green',
-        subcategory: [
-          {
-            id: 1,
-            name: 'Lógica de programação'
-          },
-          {
-            id: 2,
-            name: 'Python'
-          },
-          {
-            id: 2,
-            name: 'JavaScript'
-          },
-          {
-            id: 3,
-            name: 'ASP.Net'
-          },
-          {
-            id: 3,
-            name: 'TypeScript'
-          }
-        ]
-      },
+    this.ds.getAll<TopicModel[]>('topics').subscribe(data => {
+      this.topics = data.slice()
+      console.log('topicos', this.topics)
+    })
 
-    ]
 
-    this.topics = [
-      {
-        id: 1,
-        author: 'Carlos Jefferson Braga Alves',
-        date: new Date(),
-        name: 'Desenvolvimento de Software',
-        categorys: [],
-        replys: []
-      }
-    ]
+    this.ds.getAll<CategoryModel[]>('Categorys').subscribe(data =>{
+      this.categorys = data.slice()
+    })
+
+    // this.categorys = [
+    //   {
+    //     id: 1,
+    //     name: 'Mobile',
+    //     topics: 10,
+    //     color: 'blue',
+    //     subcategory: [
+    //       {
+    //         id: 1,
+    //         name: 'Jogos'
+    //       },
+    //       {
+    //         id: 2,
+    //         name: 'iOS'
+    //       },
+    //       {
+    //         id: 2,
+    //         name: 'Android'
+    //       },
+    //       {
+    //         id: 3,
+    //         name: 'React Native'
+    //       }
+    //     ]
+    //   },
+    //   {
+    //     id: 1,
+    //     name: 'Programação',
+    //     topics: 10,
+    //     color: 'green',
+    //     subcategory: [
+    //       {
+    //         id: 1,
+    //         name: 'Lógica de programação'
+    //       },
+    //       {
+    //         id: 2,
+    //         name: 'Python'
+    //       },
+    //       {
+    //         id: 2,
+    //         name: 'JavaScript'
+    //       },
+    //       {
+    //         id: 3,
+    //         name: 'ASP.Net'
+    //       },
+    //       {
+    //         id: 3,
+    //         name: 'TypeScript'
+    //       }
+    //     ]
+    //   },
+
+    // ]
+
+    // this.topics = [
+    //   {
+    //     id: 1,
+    //     author: 'Carlos Jefferson Braga Alves',
+    //     date: new Date(),
+    //     name: 'Desenvolvimento de Software',
+    //     subcategorys: [],
+    //     replys: []
+    //   }
+    // ]
   }
 
 }

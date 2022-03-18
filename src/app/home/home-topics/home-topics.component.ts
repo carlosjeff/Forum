@@ -2,6 +2,7 @@ import { TopicModel } from './../../shared/model/topic-model';
 import { Component, Input, OnInit } from '@angular/core';
 import { CategoryModel } from 'src/app/shared/model/category-model';
 import { HomeService } from '../home.service';
+import { TopicSubcategoryModel } from 'src/app/shared/model/topic-subcategory-model';
 
 @Component({
   selector: 'app-home-topics',
@@ -25,6 +26,14 @@ export class HomeTopicsComponent implements OnInit {
 
   getColor(color?: string){
     return this.homeServices.getColor(color);
+  }
+
+  nameColor(data: TopicSubcategoryModel[]){
+    let name = '';
+    if(data.length > 0){
+     name = data[0].subcategory?.category?.color!;
+    }
+    return name
   }
 
 }

@@ -1,3 +1,5 @@
+import { DataService } from './../shared/service/data.service';
+import { HomeService } from './home.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
@@ -22,6 +24,7 @@ import {PaginatorModule} from 'primeng/paginator';
     ButtonModule,
     PaginatorModule
   ],
-  exports: [HomeComponent]
+  exports: [HomeComponent],
+  providers: [HomeService]
 })
 export class HomeModule { }
