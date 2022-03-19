@@ -3,12 +3,12 @@
 
         <div class="p-inputgroup filter__input">
             <span class="p-inputgroup-addon"><i class="pi pi-search"></i></span>
-            <input type="text" pInputText placeholder="Username">
+            <input type="text" pInputText placeholder="Pesquisar">
         </div>
 
         <div class="p-inputgroup filter__category">
             <span class="p-inputgroup-addon"><i class="pi pi-list"></i></span>
-            <p-dropdown [options]="categorysFilter" [(ngModel)]="categorySelect" optionLabel="name" [showClear]="true" placeholder="Select a Country">
+            <p-dropdown [options]="categorys" [(ngModel)]="categorySelect" optionLabel="name" [showClear]="true" placeholder="Categorias">
               <ng-template let-country pTemplate="item">
                   <div class="country-item">
                       <div>{{country.name}}</div>
@@ -30,7 +30,7 @@
     </div>
     <div class="topics__content">
 
-      <h2 class="topics__name">{{topic.name | titlecase}}</h2>
+      <h2 class="topics__name" [ngStyle]="{'color': getColor(nameColor(topic.subcategorys!))}">{{topic.name | titlecase}}</h2>
       <p class="topics__desc">{{'Por ' + (topic.author | titlecase) + ' ' + (topic.date | date)}}</p>
 
       <div class="category__tags" >
@@ -46,11 +46,11 @@
 
     </div>
     <div class="topcs__reply">
-      <p class="topcs__reply-number" [ngStyle]="{'color': getColor('blue')}">10</p>
+      <p class="topcs__reply-number" [ngStyle]="{'color': getColor(nameColor(topic.subcategorys!))}">10</p>
       <p>Respostas</p>
     </div>
     <div class="topcs__lastReply">
-      <p class="topcs__lastReply-nome" [ngStyle]="{'color': getColor('blue')}">Jefferson Braga</p>
+      <p class="topcs__lastReply-nome" [ngStyle]="{'color': getColor(nameColor(topic.subcategorys!))}">Jefferson Braga</p>
       <p class="topcs__lastReply-time">Hoje às 11:12</p>
     </div>
   </div>

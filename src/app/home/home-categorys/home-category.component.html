@@ -9,7 +9,7 @@
     <h2 class="category__name" [ngStyle]="{'color': getColor(item.color)}">{{item.name | uppercase}}</h2>
 
     <div class="category__tags">
-      <div class="chip" *ngFor="let subItem of item.subcategory" [ngStyle]="{'border-color': getColor(item.color)}">
+      <div class="chip" *ngFor="let subItem of item.subcategorys" [ngStyle]="{'border-color': getColor(item.color)}">
         <p>{{subItem.name | titlecase}}</p>
       </div>
     </div>
@@ -18,11 +18,8 @@
 
   </div>
   <div class="category__topic">
-    	<p class="category__topic-number" [ngStyle]="{'color': getColor(item.color)}">10</p>
+    	<p class="category__topic-number" [ngStyle]="{'color': getColor(item.color)}">{{getNumberTopics(item.id!)}}</p>
     	<p>Topicos</p>
   </div>
 
 </div>
-
-
-<button (click)="actionsConsole()" > teste</button>

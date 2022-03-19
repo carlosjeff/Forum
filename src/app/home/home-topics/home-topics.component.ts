@@ -11,17 +11,19 @@ import { TopicSubcategoryModel } from 'src/app/shared/model/topic-subcategory-mo
 })
 export class HomeTopicsComponent implements OnInit {
 
-  @Input() categorys: CategoryModel[] = [];
-  @Input() topics: TopicModel[] = [];
+  categorys: CategoryModel[] = [];
+  topics: TopicModel[] = [];
 
-  categorysFilter: CategoryModel[] = []
+  //categorysFilter: CategoryModel[] = []
 
   categorySelect!: CategoryModel
 
   constructor(private homeServices: HomeService) { }
 
   ngOnInit(): void {
-    this.categorysFilter = this.categorys?.slice();
+    this.homeServices.getTopics.subscribe(data => this.topics = data.slice());
+    this.homeServices.getCategorys.subscribe(data => this.categorys = data.slice())
+
   }
 
   getColor(color?: string){

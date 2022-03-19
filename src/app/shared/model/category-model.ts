@@ -4,5 +4,5 @@ export interface CategoryModel {
   name?: string;
   color?: 'blue' | 'green' | 'yellow' | 'cyan' | 'pink' | 'indigo' | 'red' | 'teal' | 'orange' | 'bluegray' | 'purple' ;
 
-  subcategory?: SubcategoryModel[]
+  subcategorys?: SubcategoryModel[]
 }

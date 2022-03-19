@@ -1,20 +1,22 @@
 .category{
   border: 1px solid var(--surface-300);
-  height: 100px;
+  min-height: 100px;
+  height: auto;
   width: 100%;
   display: flex;
-  align-items: center;
+ // align-items: center;
   background-color:var(--surface-100);
   margin-top: 1em;
+
 }
 
 .category__icon{
-  height: 100%;
+ // height: 100%;
   width:  110px;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  box-sizing: border-box;
 
 }
 
@@ -40,12 +42,13 @@
 
 .category__tags{
   display: flex;
+  flex-wrap: wrap;
 }
 
 .category__topic{
   font-family: var(--font-family);
   width: 130px;
-  height: 100%;
+ // height: 100%;
   border: 1px solid var(--surface-300);
   display: flex;
   flex-direction: column;

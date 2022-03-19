@@ -12,45 +12,27 @@ import { TopicSubcategoryModel } from 'src/app/shared/model/topic-subcategory-mo
 })
 export class HomecategoryComponent implements OnInit{
 
-  @Input() categorysAll?: CategoryModel[];
+  //categorysAll?: CategoryModel[];
 
   categorys: CategoryModel[] = []
 
-  topics: TopicSubcategoryModel[] = []
+  topics: TopicModel[] = []
 
-  constructor(private homeServices: HomeService, private ds: DataService) { }
-
-
+  constructor(private homeServices: HomeService) { }
 
   ngOnInit(): void {
-    this.ds.getAll<CategoryModel[]>('Categorys').subscribe(data =>{
-      this.categorys = data.slice()
-      this.popular()
-    })
+    this.homeServices.getCategorys.subscribe(data => this.categorys = data.slice());
+    this.homeServices.getTopics.subscribe(data => this.topics = data.slice())
   }
 
-  popular(){
-    this.categorys?.forEach(element => {
-
-      element.subcategory?.forEach(sub => {
-
-       sub.topics?.forEach(topic => {
-
-         this.topics.concat({subcategoryId: topic.subcategoryId, topicsId: topic.topicsId})
-         console.log('popular topics', this.topics)
-       })
-
-      });
-    });
-
+  getNumberTopics(categoryId: number){
+    return this.homeServices.getNumberTopycsCategorys(this.topics, categoryId);
   }
 
   getColor(color?: string){
     return this.homeServices.getColor(color);
   }
 
-  actionsConsole(){
-    console.log('popular topics', this.topics)
-  }
+
 
 }

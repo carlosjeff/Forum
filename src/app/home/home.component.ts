@@ -10,21 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  categorys: CategoryModel[] = [];
-  topics: TopicModel[] = [];
+
 
   constructor(private ds: DataService) { }
 
   ngOnInit(): void {
-    this.ds.getAll<TopicModel[]>('topics').subscribe(data => {
-      this.topics = data.slice()
-      console.log('topicos', this.topics)
-    })
 
-
-    this.ds.getAll<CategoryModel[]>('Categorys').subscribe(data =>{
-      this.categorys = data.slice()
-    })
 
     // this.categorys = [
     //   {
