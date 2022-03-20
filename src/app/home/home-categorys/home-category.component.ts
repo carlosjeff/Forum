@@ -22,8 +22,19 @@ export class HomecategoryComponent implements OnInit{
 
   ngOnInit(): void {
     this.homeServices.getCategorys.subscribe(data => this.categorys = data.slice());
-    this.homeServices.getTopics.subscribe(data => this.topics = data.slice())
+    this.homeServices.getTopics.subscribe(data => {
+
+    //      const topicArrey: TopicModel[] = value.filter(t =>  {
+    //   return !t.subcategorys?.findIndex(s => s.subcategory?.categoryId == categoryId)
+    // })
+
+
+      this.topics = data.slice()
+
+    })
   }
+
+
 
   getNumberTopics(categoryId: number){
     return this.homeServices.getNumberTopycsCategorys(this.topics, categoryId);

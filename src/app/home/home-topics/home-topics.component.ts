@@ -1,8 +1,11 @@
+import { OptionsPage } from './../../shared/model/options-page';
+import { Metadata } from './../../shared/model/metadata';
 import { TopicModel } from './../../shared/model/topic-model';
 import { Component, Input, OnInit } from '@angular/core';
 import { CategoryModel } from 'src/app/shared/model/category-model';
 import { HomeService } from '../home.service';
 import { TopicSubcategoryModel } from 'src/app/shared/model/topic-subcategory-model';
+import { PagePrime } from 'src/app/shared/model/page-prime';
 
 @Component({
   selector: 'app-home-topics',
@@ -13,6 +16,10 @@ export class HomeTopicsComponent implements OnInit {
 
   categorys: CategoryModel[] = [];
   topics: TopicModel[] = [];
+  metadata: Metadata = {};
+
+  filter: string = "";
+
 
   //categorysFilter: CategoryModel[] = []
 
@@ -23,6 +30,7 @@ export class HomeTopicsComponent implements OnInit {
   ngOnInit(): void {
     this.homeServices.getTopics.subscribe(data => this.topics = data.slice());
     this.homeServices.getCategorys.subscribe(data => this.categorys = data.slice())
+    this.homeServices.getMetadata.subscribe(data => this.metadata = data)
 
   }
 
@@ -36,6 +44,13 @@ export class HomeTopicsComponent implements OnInit {
      name = data[0].subcategory?.category?.color!;
     }
     return name
+  }
+
+  onPageChange(event: PagePrime){
+    const option = new OptionsPage()
+    option.page = event.page + 1;
+
+    this.homeServices.topicsPagination(option);
   }
 
 }

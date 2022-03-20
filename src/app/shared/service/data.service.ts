@@ -1,3 +1,4 @@
+import { OptionsPage } from './../model/options-page';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -20,4 +21,7 @@ export class DataService {
   }
 
 
+  getPagination<T>(coll: string, options: OptionsPage){
+    return this.http.post<T>(`${this.url}api/${coll}/pagination`,options)
+  }
 }

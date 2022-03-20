@@ -3,7 +3,7 @@
 
         <div class="p-inputgroup filter__input">
             <span class="p-inputgroup-addon"><i class="pi pi-search"></i></span>
-            <input type="text" pInputText placeholder="Pesquisar">
+            <input type="text" pInputText placeholder="Pesquisar" [(ngModel)]="filter">
         </div>
 
         <div class="p-inputgroup filter__category">
@@ -55,6 +55,7 @@
     </div>
   </div>
   <div class="topics__pagination">
-    <p-paginator [rows]="10" [totalRecords]="120" [rowsPerPageOptions]="[10,20,30]"></p-paginator>
+    <p-paginator [rows]="metadata.pageSize!" [totalRecords]="metadata.totalItemCount!"
+     (onPageChange)="onPageChange($event)"></p-paginator>
   </div>
 </div>

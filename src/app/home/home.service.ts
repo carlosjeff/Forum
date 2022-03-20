@@ -1,3 +1,6 @@
+import { Metadata } from './../shared/model/metadata';
+import { OptionsPage } from './../shared/model/options-page';
+import { PaginationTopics } from './../shared/model/pagination-topics';
 import { DataService } from './../shared/service/data.service';
 import { CategoryModel } from 'src/app/shared/model/category-model';
 import { TopicModel } from './../shared/model/topic-model';
@@ -11,6 +14,7 @@ export class HomeService implements OnDestroy {
 
   private $topics = new BehaviorSubject<TopicModel[]>([]);
   private $category = new BehaviorSubject<CategoryModel[]>([]);
+  private $metadata = new BehaviorSubject<Metadata>({});
 
   constructor(private ds: DataService) {
     this.topicsInit();
@@ -23,11 +27,27 @@ export class HomeService implements OnDestroy {
   }
 
   topicsInit(){
-    this.ds.getAll<TopicModel[]>('topics').subscribe(data => this.$topics.next(data));
+    //this.ds.getAll<TopicModel[]>('topics').subscribe(data => this.$topics.next(data));
+    const options = new OptionsPage();
+    this.ds.getPagination<PaginationTopics>('topics',options).subscribe(data =>{
+      this.$topics.next(data.itens.slice())
+      this.$metadata.next(data.metadata)
+    })
   }
 
   get getTopics(): Observable<TopicModel[]>{
     return this.$topics.asObservable()
+  }
+
+  get getMetadata(): Observable<Metadata>{
+    return this.$metadata.asObservable()
+  }
+
+  topicsPagination(options: OptionsPage){
+    this.ds.getPagination<PaginationTopics>('topics',options).subscribe(data =>{
+      this.$topics.next(data.itens.slice())
+      this.$metadata.next(data.metadata)
+    })
   }
 
   categoryInit(){
