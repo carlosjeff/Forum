@@ -17,7 +17,7 @@ export class HomeTopicsComponent implements OnInit {
   categorys: CategoryModel[] = [];
   topics: TopicModel[] = [];
   metadata: Metadata = {};
-
+  optionsPage = new OptionsPage();
   filter: string = "";
 
 
@@ -31,7 +31,6 @@ export class HomeTopicsComponent implements OnInit {
     this.homeServices.getTopics.subscribe(data => this.topics = data.slice());
     this.homeServices.getCategorys.subscribe(data => this.categorys = data.slice())
     this.homeServices.getMetadata.subscribe(data => this.metadata = data)
-
   }
 
   getColor(color?: string){
@@ -47,10 +46,23 @@ export class HomeTopicsComponent implements OnInit {
   }
 
   onPageChange(event: PagePrime){
-    const option = new OptionsPage()
-    option.page = event.page + 1;
+    this.optionsPage.page = event.page + 1;
 
-    this.homeServices.topicsPagination(option);
+    this.homeServices.topicsPagination(this.optionsPage);
+  }
+
+  filterChange(){
+    if(this.filter.length > 1){
+      this.optionsPage.filter = this.filter;
+    }else{
+      this.optionsPage.filter = ""
+    }
+    this.homeServices.topicsPagination(this.optionsPage);
+  }
+
+  categoryChange(){
+    this.optionsPage.categoryId = this.categorySelect ? this.categorySelect.id! : 0
+    this.homeServices.topicsPagination(this.optionsPage);
   }
 
 }

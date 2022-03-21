@@ -21,17 +21,15 @@ export class HomecategoryComponent implements OnInit{
   constructor(private homeServices: HomeService) { }
 
   ngOnInit(): void {
-    this.homeServices.getCategorys.subscribe(data => this.categorys = data.slice());
-    this.homeServices.getTopics.subscribe(data => {
+    this.homeServices.getCategorys.subscribe(data => {
 
-    //      const topicArrey: TopicModel[] = value.filter(t =>  {
-    //   return !t.subcategorys?.findIndex(s => s.subcategory?.categoryId == categoryId)
-    // })
+      this.categorys =  data
+        .map(c => { return {...c, qtdTopics: this.getNumberTopics(c.id!)}})
+        .sort(c => c.qtdTopics)
+        .slice(0,5)
 
-
-      this.topics = data.slice()
-
-    })
+    });
+    this.homeServices.getTopics.subscribe(data =>  this.topics = data.slice())
   }
 
 

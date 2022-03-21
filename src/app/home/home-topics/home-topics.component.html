@@ -3,12 +3,12 @@
 
         <div class="p-inputgroup filter__input">
             <span class="p-inputgroup-addon"><i class="pi pi-search"></i></span>
-            <input type="text" pInputText placeholder="Pesquisar" [(ngModel)]="filter">
+            <input type="text" pInputText placeholder="Pesquisar" [(ngModel)]="filter" (keyup)="filterChange()">
         </div>
 
         <div class="p-inputgroup filter__category">
             <span class="p-inputgroup-addon"><i class="pi pi-list"></i></span>
-            <p-dropdown [options]="categorys" [(ngModel)]="categorySelect" optionLabel="name" [showClear]="true" placeholder="Categorias">
+            <p-dropdown [options]="categorys" [(ngModel)]="categorySelect" optionLabel="name" [showClear]="true" placeholder="Categorias" (onChange)="categoryChange()">
               <ng-template let-country pTemplate="item">
                   <div class="country-item">
                       <div>{{country.name}}</div>
