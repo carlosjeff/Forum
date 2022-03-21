@@ -1,3 +1,5 @@
+import { TopicModule } from './topic/topic.module';
+import { TopicModel } from './shared/model/topic-model';
 import { DataService } from './shared/service/data.service';
 import { HomeModule } from './home/home.module';
 import { HeaderModule } from './shared/header/header.module';
@@ -11,10 +13,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -22,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderModule,
     HomeModule,
     HttpClientModule,
+    TopicModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

@@ -46,7 +46,7 @@
 
     </div>
     <div class="topcs__reply">
-      <p class="topcs__reply-number" [ngStyle]="{'color': getColor(nameColor(topic.subcategorys!))}">10</p>
+      <p class="topcs__reply-number" [ngStyle]="{'color': getColor(nameColor(topic.subcategorys!))}">{{topic.replys?.length! > 0 ? topic.replys?.length : 0}}</p>
       <p>Respostas</p>
     </div>
     <div class="topcs__lastReply">
