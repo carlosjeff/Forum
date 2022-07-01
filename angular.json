@@ -34,7 +34,7 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "./node_modules/quill/dist/quill.js"
+              "https://kit.fontawesome.com/e76c776713.js"
             ]
           },
           "configurations": {
