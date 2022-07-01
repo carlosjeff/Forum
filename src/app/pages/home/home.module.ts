@@ -1,16 +1,15 @@
-import { DataService } from './../shared/service/data.service';
+import { DataService } from './../../shared/service/data.service';
 import { HomeService } from './home.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { HomecategoryComponent } from './home-categorys/home-category.component';
 import { HomeTopicsComponent } from './home-topics/home-topics.component';
-import {DropdownModule} from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {ButtonModule} from 'primeng/button';
-import {PaginatorModule} from 'primeng/paginator';
+import { ChipModule } from 'src/app/shared/component/chip/chip.module';
+
 
 
 @NgModule({
@@ -18,11 +17,9 @@ import {PaginatorModule} from 'primeng/paginator';
   imports: [
     CommonModule,
     BrowserAnimationsModule,
-    DropdownModule,
     FormsModule,
     ScrollingModule,
-    ButtonModule,
-    PaginatorModule
+    ChipModule
   ],
   exports: [HomeComponent],
   providers: [HomeService]

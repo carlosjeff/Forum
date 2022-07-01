@@ -1,9 +1,9 @@
-import { Metadata } from './../shared/model/metadata';
-import { OptionsPage } from './../shared/model/options-page';
-import { PaginationTopics } from './../shared/model/pagination-topics';
-import { DataService } from './../shared/service/data.service';
+import { Metadata } from './../../shared/model/metadata';
+import { OptionsPage } from './../../shared/model/options-page';
+import { PaginationTopics } from './../../shared/model/pagination-topics';
+import { DataService } from './../../shared/service/data.service';
 import { CategoryModel } from 'src/app/shared/model/category-model';
-import { TopicModel } from './../shared/model/topic-model';
+import { TopicModel } from './../../shared/model/topic-model';
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 

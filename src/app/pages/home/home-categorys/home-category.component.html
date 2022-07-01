@@ -9,9 +9,7 @@
     <h2 class="category__name" [ngStyle]="{'color': getColor(item.color)}">{{item.name | uppercase}}</h2>
 
     <div class="category__tags">
-      <div class="chip" *ngFor="let subItem of item.subcategorys" [ngStyle]="{'border-color': getColor(item.color)}">
-        <p>{{subItem.name | titlecase}}</p>
-      </div>
+      <app-chip *ngFor="let subItem of item.subcategorys" [name]="subItem.name!" [color]=" getColor(item.color)"></app-chip>
     </div>
 
 

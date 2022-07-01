@@ -1,7 +1,7 @@
-import { TopicModel } from './../../shared/model/topic-model';
-import { DataService } from './../../shared/service/data.service';
+import { TopicModel } from './../../../shared/model/topic-model';
+import { DataService } from './../../../shared/service/data.service';
 import { HomeService } from './../home.service';
-import { CategoryModel } from '../../shared/model/category-model';
+import { CategoryModel } from '../../../shared/model/category-model';
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { TopicSubcategoryModel } from 'src/app/shared/model/topic-subcategory-model';
 

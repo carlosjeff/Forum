@@ -1,6 +1,6 @@
-import { OptionsPage } from './../../shared/model/options-page';
-import { Metadata } from './../../shared/model/metadata';
-import { TopicModel } from './../../shared/model/topic-model';
+import { OptionsPage } from './../../../shared/model/options-page';
+import { Metadata } from './../../../shared/model/metadata';
+import { TopicModel } from './../../../shared/model/topic-model';
 import { Component, Input, OnInit } from '@angular/core';
 import { CategoryModel } from 'src/app/shared/model/category-model';
 import { HomeService } from '../home.service';

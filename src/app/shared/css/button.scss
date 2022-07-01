@@ -1,0 +1,47 @@
+.button{
+  color: var(--blue-500);
+  transition: all 0.5s;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  padding: 1em;
+  position: relative;
+  background-color: transparent;
+
+  &:hover{
+    cursor: pointer;
+    background-color: var(--gray-50);
+    color: var(--blue-500);
+  }
+
+  &:active{
+    background-color: var(--blue-500);
+    color: var(--gray-50);
+
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    box-sizing: border-box;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.3s;
+    border: 1px solid var(--blue-500);
+    transform: scale(1.2,1.2);
+  }
+  &:hover::after {
+    opacity: 1;
+    transform: scale(1,1);
+    border: 3px solid var(--blue-500);
+  }
+
+}
+
+

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header.component';
-import {ButtonModule} from 'primeng/button';
 import { RouterModule } from '@angular/router';
 
 
@@ -11,8 +10,7 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    ButtonModule,
-    RouterModule
+    RouterModule,
 
   ],
   exports: [

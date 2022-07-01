@@ -8,13 +8,7 @@
 
         <div class="p-inputgroup filter__category">
             <span class="p-inputgroup-addon"><i class="pi pi-list"></i></span>
-            <p-dropdown [options]="categorys" [(ngModel)]="categorySelect" optionLabel="name" [showClear]="true" placeholder="Categorias" (onChange)="categoryChange()">
-              <ng-template let-country pTemplate="item">
-                  <div class="country-item">
-                      <div>{{country.name}}</div>
-                  </div>
-              </ng-template>
-            </p-dropdown>
+
         </div>
 
         <div class="filter__buttonAdd">
@@ -55,7 +49,6 @@
     </div>
   </div>
   <div class="topics__pagination">
-    <p-paginator [rows]="metadata.pageSize!" [totalRecords]="metadata.totalItemCount!"
-     (onPageChange)="onPageChange($event)"></p-paginator>
+
   </div>
 </div>
