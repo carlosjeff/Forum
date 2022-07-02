@@ -1,0 +1,31 @@
+<div class="dropdown input input-icon input-icon-right">
+
+  <span class="icon icon-arrow-down"></span>
+
+  <input type="text" #dropdownInput [placeholder]="placeholder" readonly (click)="disabled = !disabled"
+    (blur)="disabled = true">
+
+  <button class="button dropdown-clear" *ngIf="value" (click)="value = '';dropdownInput.value = ''">
+      <span class="icon-x"></span>
+  </button>
+
+  <div class="dropdown-list" [ngClass]="{'disabled': disabled, 'active': !disabled}">
+
+    <ul class="list">
+
+      <ng-container *ngFor="let option of options; let i = index">
+
+        <li class="list-item">
+          <label [attr.for]="i">{{ option[labelName] }}</label>
+        </li>
+
+        <input class="dropdown-options" type="radio" name="dropdownItem" [(ngModel)]="value"
+          (change)="dropdownInput.value = option[labelName]" [value]="option" [id]="i">
+
+      </ng-container>
+
+    </ul>
+
+  </div>
+
+</div>

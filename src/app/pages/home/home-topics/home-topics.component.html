@@ -1,18 +1,26 @@
 <div class="topics">
   <div class="topics__filter">
 
-        <div class="filter__input">
-            <span class="p-inputgroup-addon"><i class="pi pi-search"></i></span>
-            <input type="text" class="input" placeholder="Pesquisar" [(ngModel)]="filter" (keyup)="filterChange()">
+        <div class="filter__input input input-icon input-icon-left">
+            <span class="icon icon-search"></span>
+            <input type="text" placeholder="Pesquisar" [(ngModel)]="filter" (keyup)="filterChange()">
         </div>
 
         <div class="p-inputgroup filter__category">
             <span class="p-inputgroup-addon"><i class="pi pi-list"></i></span>
+            <app-dropdown [(ngModel)]="categorySelect" [options]="categorys" labelName="name" placeholder="Categorias" (change)="categoryChange()"></app-dropdown>
 
+            <!-- <p-dropdown [options]="categorys" [(ngModel)]="categorySelect" optionLabel="name" [showClear]="true" placeholder="Categorias" (onChange)="categoryChange()">
+              <ng-template let-country pTemplate="item">
+                  <div class="country-item">
+                      <div>{{country.name}}</div>
+                  </div>
+              </ng-template>
+            </p-dropdown> -->
         </div>
 
         <div class="filter__buttonAdd">
-          <button pButton pRipple type="button" icon="pi pi-plus" label="Criar novo tópico" class="p-button-rounded"></button>
+          <button  type="button" label="" class="button">Criar novo tópico</button>
         </div>
 
 

@@ -1,0 +1,14 @@
+
+.icon-search::before{
+  content:"\f002" !important;
+  font-family: var(--font-icon);
+}
+
+.icon-arrow-down::before{
+  content:"\f107" !important;
+  font-family: var(--font-icon);
+}
+.icon-x::before{
+  content:"\f00d" !important;
+  font-family: var(--font-icon);
+}

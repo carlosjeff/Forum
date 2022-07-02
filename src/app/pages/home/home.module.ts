@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChipModule } from 'src/app/shared/component/chip/chip.module';
+import { DropdownModule } from 'src/app/shared/component/dropdown/dropdown.module';
 
 
 
@@ -19,7 +20,8 @@ import { ChipModule } from 'src/app/shared/component/chip/chip.module';
     BrowserAnimationsModule,
     FormsModule,
     ScrollingModule,
-    ChipModule
+    ChipModule,
+    DropdownModule
   ],
   exports: [HomeComponent],
   providers: [HomeService]

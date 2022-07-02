@@ -1,24 +1,15 @@
 @import '../src/app/shared/css/reset.scss';
 @import '../src/app/shared/css/colors.scss';
 @import 'https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;400;900&family=Raleway:wght@100&display=swap';
-@import 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200';
 @import '../src/app/shared/css/button.scss';
 @import '../src/app/shared/css/input.scss';
+@import '../src/app/shared/css/icons.scss';
 
 
 :root{
   --font-family: 'Nunito Sans', sans-serif;
   --font-icon: FontAwesome;
 }
-
-.icon{
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48
-}
-
 
 body{
   background-color: var(--surface-50);

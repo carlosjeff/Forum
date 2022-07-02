@@ -61,6 +61,7 @@ export class HomeTopicsComponent implements OnInit {
   }
 
   categoryChange(){
+    console.log('foi')
     this.optionsPage.categoryId = this.categorySelect ? this.categorySelect.id! : 0
     this.homeServices.topicsPagination(this.optionsPage);
   }
