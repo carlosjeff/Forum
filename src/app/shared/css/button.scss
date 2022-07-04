@@ -34,14 +34,33 @@
     opacity: 0;
     transition: all 0.3s;
     border: 1px solid var(--blue-500);
-    transform: scale(1.2,1.2);
+    transform: scale(1.1,1.1);
+    visibility: hidden;
   }
+
   &:hover::after {
+    visibility: visible;
     opacity: 1;
     transform: scale(1,1);
     border: 3px solid var(--blue-500);
+
   }
 
 }
 
+.button-blue{
+  color: var(--gray-50);
+  background-color: var(--blue-500);
+
+  &:hover{
+    background-color: var(--blue-600);
+    color: var(--gray-50);
+  }
+
+  &:active{
+    background-color: var(--gray-50);
+    color: var(--blue-500);
+  }
+
+}
 

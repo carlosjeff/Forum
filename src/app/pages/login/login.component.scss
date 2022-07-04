@@ -1,0 +1,46 @@
+.login{
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  row-gap: 1em;
+  box-sizing: border-box;
+  padding: 2em;
+}
+
+.login__title{
+  font-size: 2rem;
+  justify-self: center;
+  color: var(--blue-500);
+}
+
+.login__close{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 60px;
+  width: 60px;
+}
+
+.login__user{
+
+}
+
+.login__password{
+  position: relative;
+
+  .password__visible{
+
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    padding: 0.5em;
+    right: 0em;
+    top: 50%;
+    bottom: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+}
+
+.login__button{
+
+}

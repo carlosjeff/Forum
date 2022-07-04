@@ -1,59 +1,48 @@
 <div class="topics">
   <div class="topics__filter">
 
-        <div class="filter__input input input-icon input-icon-left">
-            <span class="icon icon-search"></span>
-            <input type="text" placeholder="Pesquisar" [(ngModel)]="filter" (keyup)="filterChange()">
-        </div>
+    <div class="filter__input input input-icon input-icon-left">
+      <span class="icon icon-search"></span>
+      <input type="text" placeholder="Pesquisar" [(ngModel)]="filter" (keyup)="filterChange()">
+    </div>
 
-        <div class="p-inputgroup filter__category">
-            <span class="p-inputgroup-addon"><i class="pi pi-list"></i></span>
-            <app-dropdown [(ngModel)]="categorySelect" [options]="categorys" labelName="name" placeholder="Categorias" (change)="categoryChange()"></app-dropdown>
 
-            <!-- <p-dropdown [options]="categorys" [(ngModel)]="categorySelect" optionLabel="name" [showClear]="true" placeholder="Categorias" (onChange)="categoryChange()">
-              <ng-template let-country pTemplate="item">
-                  <div class="country-item">
-                      <div>{{country.name}}</div>
-                  </div>
-              </ng-template>
-            </p-dropdown> -->
-        </div>
+    <app-dropdown class="filter__category" [(ngModel)]="categorySelect" [options]="categorys" labelName="name"
+      placeholder="Categorias" (change)="categoryChange()"></app-dropdown>
 
-        <div class="filter__buttonAdd">
-          <button  type="button" label="" class="button">Criar novo tópico</button>
-        </div>
-
+    <button type="button" label="" class="button button-blue">
+      <span class="icon icon-plus"></span>
+      Criar novo tópico
+    </button>
 
   </div>
   <div class="topics__post" *ngFor="let topic of topics">
-    <div class="topics__icon "
-    [ngStyle]="{'background-color': getColor(nameColor(topic.subcategorys!))}">
-      <i class="pi pi-comment icon"></i>
+    <div class="topics__icon " [ngStyle]="{'background-color': getColor(nameColor(topic.subcategorys!))}">
+      <span class="icon icon-chat"></span>
     </div>
     <div class="topics__content">
 
-      <h2 class="topics__name" [ngStyle]="{'color': getColor(nameColor(topic.subcategorys!))}">{{topic.name | titlecase}}</h2>
+      <h2 class="topics__name" [ngStyle]="{'color': getColor(nameColor(topic.subcategorys!))}">{{topic.name |
+        titlecase}}</h2>
       <p class="topics__desc">{{'Por ' + (topic.author | titlecase) + ' ' + (topic.date | date)}}</p>
 
-      <div class="category__tags" >
-
-        <div class="chip" [ngStyle]="{'border-color': getColor(item.subcategory?.category?.color)}" *ngFor="let item of topic.subcategorys">
-
-          <p>{{item.subcategory?.name}}</p>
-
-        </div>
-
+      <div class="category__tags">
+        <app-chip *ngFor="let item of topic.subcategorys" [name]="item.subcategory?.name!"
+          [color]=" getColor(item.subcategory?.category?.color)"></app-chip>
       </div>
 
 
     </div>
     <div class="topcs__reply">
-      <p class="topcs__reply-number" [ngStyle]="{'color': getColor(nameColor(topic.subcategorys!))}">{{topic.replys?.length! > 0 ? topic.replys?.length : 0}}</p>
+      <p class="topcs__reply-number" [ngStyle]="{'color': getColor(nameColor(topic.subcategorys!))}">
+        {{topic.replys?.length! > 0 ? topic.replys?.length : 0}}</p>
       <p>Respostas</p>
     </div>
     <div class="topcs__lastReply">
-      <p class="topcs__lastReply-nome" [ngStyle]="{'color': getColor(nameColor(topic.subcategorys!))}">Jefferson Braga</p>
-      <p class="topcs__lastReply-time">Hoje às 11:12</p>
+      <p class="topcs__lastReply-nome" [ngStyle]="{'color': getColor(nameColor(topic.subcategorys!))}">{{ topic.author |
+        titlecase }}</p>
+      <!-- <p class="topcs__lastReply-time">{{ topic.date | date : [ : format [ : timezone [ : locale ] ] ]  }}</p> -->
+      <p class="topcs__lastReply-time">{{ topic.date | date : 'EEEE, MMMM d, y' }}</p>
     </div>
   </div>
   <div class="topics__pagination">
