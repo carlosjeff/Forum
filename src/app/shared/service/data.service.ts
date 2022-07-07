@@ -1,13 +1,14 @@
 import { OptionsPage } from './../model/options-page';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  private url = 'https://localhost:44398/';
+  private url = environment.apiUrl;
   private headers!: HttpHeaders;
 
   constructor(private http: HttpClient) {

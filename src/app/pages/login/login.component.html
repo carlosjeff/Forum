@@ -1,22 +1,25 @@
 <div mat-dialog-content class="login">
   <h2 class="login__title">Login</h2>
-  <button class="button login__close">
+  <button class="button login__close" mat-dialog-close>
     <span class="icon-x"></span>
   </button>
-  <div class="input input-icon input-icon-left login__user">
-    <span class="icon icon-user"></span>
-    <input type="text" placeholder="Login">
-  </div>
-  <div class="input input-icon input-icon-left login__password ">
-    <span class="icon icon-password"></span>
-    <input [type]="passwordHiden ? 'password' : 'text'" placeholder="Senha">
-    <button class="button password__visible" (click)="passwordHiden = !passwordHiden">
-      <span class="icon-eye" *ngIf="passwordHiden"></span>
-      <span class="icon-eye-slash" *ngIf="!passwordHiden"></span>
-    </button>
-  </div>
-  <button type="button" class="button button-blue login__button">
+  <form [formGroup]="formLogin" class="login__form">
+    <div class="input input-icon input-icon-left login__user">
+      <span class="icon icon-user"></span>
+      <input type="email" formControlName="email" placeholder="Login">
+    </div>
+    <div class="input input-icon input-icon-left login__password ">
+      <span class="icon icon-password"></span>
+      <input [type]="passwordHiden ? 'password' : 'text'" placeholder="Senha" formControlName="senha">
+      <button class="button password__visible" (click)="passwordHiden = !passwordHiden">
+        <span class="icon-eye" *ngIf="passwordHiden"></span>
+        <span class="icon-eye-slash" *ngIf="!passwordHiden"></span>
+      </button>
+    </div>
+  </form>
+  <button type="button" class="button button-blue login__button" (click)="login()">
     Entrar
     <span class="icon icon-login"></span>
   </button>
+  <button (click)="teste()">teste</button>
 </div>
