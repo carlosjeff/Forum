@@ -19,7 +19,8 @@
       </li>
 
       <li>
-        <button type="button" class="button button-gray" (click)="openDialog()">Entrar<span class="icon icon-login"></span></button>
+        <button type="button" class="button button-gray" *ngIf="!logged" (click)="openDialog()">Entrar<span class="icon icon-login"></span></button>
+        <button type="button" class="button button-gray" *ngIf="logged" (click)="logOut()">Sair<span class="icon icon-login"></span></button>
       </li>
 
     </ul>

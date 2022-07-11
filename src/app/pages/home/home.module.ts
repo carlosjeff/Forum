@@ -8,8 +8,8 @@ import { HomeTopicsComponent } from './home-topics/home-topics.component';
 import { FormsModule } from '@angular/forms';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ChipModule } from 'src/app/shared/component/chip/chip.module';
-import { DropdownModule } from 'src/app/shared/component/dropdown/dropdown.module';
+import { ChipModule } from 'src/app/shared/components/chip/chip.module';
+import { DropdownModule } from 'src/app/shared/components/dropdown/dropdown.module';
 import ptBr from '@angular/common/locales/pt';
 registerLocaleData(ptBr)
 

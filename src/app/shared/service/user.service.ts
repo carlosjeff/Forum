@@ -41,7 +41,7 @@ export class UserService {
 
     var returnMock: any = [];
 
-    if(user.email === "hello@balta.io" && user.senha == "123"){
+    if(user.email === "hello@balta.io" && user.password == "123"){
       returnMock.success = true;
       returnMock.user = user;
       returnMock.token = "TokenQueSeriaGeradoPelaAPI";
