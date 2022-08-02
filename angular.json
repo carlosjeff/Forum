@@ -110,5 +110,7 @@
       }
     }
   },
-  "defaultProject": "forum"
+  "cli": {
+    "analytics": false
+  }
 }
