@@ -18,11 +18,11 @@ export class DataService {
   }
 
   getAll<T>(coll: string){
-    return this.http.get<T>(`${this.url}api/${coll}`);
+    return this.http.get<T>(`${this.url}/${coll}/all`);
   }
 
 
   getPagination<T>(coll: string, options: OptionsPage){
-    return this.http.post<T>(`${this.url}api/${coll}/pagination`,options)
+    return this.http.post<T>(`${this.url}/${coll}/pagination`,options)
   }
 }

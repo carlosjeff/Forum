@@ -39,6 +39,7 @@ $forum-theme: mat.define-light-theme((
 @import '../src/app/shared/css/button.scss';
 @import '../src/app/shared/css/input.scss';
 @import '../src/app/shared/css/icons.scss';
+@import  '~quill/dist/quill.bubble.css' ;
 
 
 :root{

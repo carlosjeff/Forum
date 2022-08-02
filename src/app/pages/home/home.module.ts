@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChipModule } from 'src/app/shared/components/chip/chip.module';
 import { DropdownModule } from 'src/app/shared/components/dropdown/dropdown.module';
 import ptBr from '@angular/common/locales/pt';
+import {MatDialogModule} from '@angular/material/dialog';
 registerLocaleData(ptBr)
 
 
@@ -22,7 +23,8 @@ registerLocaleData(ptBr)
     FormsModule,
     ScrollingModule,
     ChipModule,
-    DropdownModule
+    DropdownModule,
+    MatDialogModule
   ],
   exports: [HomeComponent],
   providers: [

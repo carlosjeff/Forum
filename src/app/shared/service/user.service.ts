@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../model/user';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -18,23 +19,27 @@ export class UserService {
 
   login(user: User) : Observable<any> {
 
-    // return this.httpClient.post<any>(this.apiUrl + '/login', user).pipe(
-    //   tap((response) => {
-    //     if(!response.success) return;
+    return this.httpClient.post<any>(this.apiUrl + '/auth/login', user).pipe(
+      tap((response) => {
 
-    //     localStorage.setItem('token', btoa(JSON.stringify(response['token'])));
-    //     localStorage.setItem('user', btoa(JSON.stringify(response['usuario'])));
+        if(!response['access_token']) return;
 
-    //     this.router.navigate([''])
-    //   })
-    // )
+        const tokenData = this.decodeJWT(response['access_token']);
 
-    return this.mockUsuarioLogin(user).pipe(tap((response) => {
-      if(!response.success) return;
-      localStorage.setItem('token', btoa(JSON.stringify("TokenQueSeriaGeradoPelaAPI")));
-      localStorage.setItem('user', btoa(JSON.stringify(user)));
-      this.router.navigate(['']);
-    }));
+
+         localStorage.setItem('token', btoa(JSON.stringify(response['access_token'])));
+         localStorage.setItem('email', btoa(JSON.stringify(tokenData['email'])));
+
+        this.router.navigate([''])
+      })
+    )
+
+    // return this.mockUsuarioLogin(user).pipe(tap((response) => {
+    //   if(!response.success) return;
+    //   localStorage.setItem('token', btoa(JSON.stringify("TokenQueSeriaGeradoPelaAPI")));
+    //   localStorage.setItem('user', btoa(JSON.stringify(user)));
+    //   this.router.navigate(['']);
+    // }));
   }
 
   private mockUsuarioLogin(user: User): Observable<any> {
@@ -53,6 +58,12 @@ export class UserService {
     return of(returnMock);
   }
 
+  private decodeJWT(token: string): any {
+    const helper = new JwtHelperService();
+
+  return helper.decodeToken(token);
+  }
+
   logOut(){
 
     localStorage.clear();
@@ -64,9 +75,9 @@ export class UserService {
     return localStorage.getItem('user') ? JSON.parse(atob(localStorage.getItem('user')!)) : null
   }
 
-  get getIdUser(): string{
-    return localStorage.getItem('user') ? (JSON.parse(atob(localStorage.getItem('user')!)) as User).id! : '';
-  }
+  // get getIdUser(): string{
+  //   return localStorage.getItem('user') ? (JSON.parse(atob(localStorage.getItem('user')!)) as User).id! : '';
+  // }
 
   get getTokenUser(): string{
 

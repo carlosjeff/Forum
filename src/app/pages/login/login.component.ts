@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from 'src/app/shared/model/user';
 import { UserService } from 'src/app/shared/service/user.service';
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
-              private snackBar: MatSnackBar) { }
+              private snackBar: MatSnackBar,
+              public dialogRef: MatDialogRef<LoginComponent>) { }
 
   ngOnInit(): void {
     this.criarForm();
@@ -29,13 +31,10 @@ export class LoginComponent implements OnInit {
 
     var user = this.formLogin.getRawValue() as User;
     this.userService.login(user).subscribe((response) => {
-      console.log(response);
-      if(!response.success) {
-        this.snackBar.open('Falha na autenticação', 'Usuário ou senha incorretos.', {
-          duration: 3000
-        });
-      }
-    })
+      this.dialogRef.close()
+    },err =>   this.snackBar.open('Falha na autenticação', 'Usuário ou senha incorretos.', {
+      duration: 3000
+    }))
   }
 
   criarForm(){

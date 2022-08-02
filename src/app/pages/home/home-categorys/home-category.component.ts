@@ -21,21 +21,8 @@ export class HomecategoryComponent implements OnInit{
   constructor(private homeServices: HomeService) { }
 
   ngOnInit(): void {
-    this.homeServices.getCategorys.subscribe(data => {
-
-      this.categorys =  data
-        .map(c => { return {...c, qtdTopics: this.getNumberTopics(c.id!)}})
-        .sort(c => c.qtdTopics)
-        .slice(0,5)
-
-    });
+    this.homeServices.getCategorys.subscribe(data => this.categorys =  data.slice(0,5));
     this.homeServices.getTopics.subscribe(data =>  this.topics = data.slice())
-  }
-
-
-
-  getNumberTopics(categoryId: number){
-    return this.homeServices.getNumberTopycsCategorys(this.topics, categoryId);
   }
 
   getColor(color?: string){

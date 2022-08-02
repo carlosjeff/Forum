@@ -1,3 +1,6 @@
+import { TopicComponent } from './../../topic/topic.component';
+import { CreateTopicComponent } from './../../topic/create-topic/create-topic.component';
+import { MatDialog } from '@angular/material/dialog';
 import { OptionsPage } from './../../../shared/model/options-page';
 import { Metadata } from './../../../shared/model/metadata';
 import { TopicModel } from './../../../shared/model/topic-model';
@@ -25,12 +28,13 @@ export class HomeTopicsComponent implements OnInit {
 
   categorySelect!: CategoryModel
 
-  constructor(private homeServices: HomeService) { }
+  constructor(private homeServices: HomeService,
+              private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.homeServices.getTopics.subscribe(data => this.topics = data.slice());
     this.homeServices.getCategorys.subscribe(data => this.categorys = data.slice())
-    this.homeServices.getMetadata.subscribe(data => this.metadata = data)
+    // this.homeServices.getMetadata.subscribe(data => this.metadata = data)
   }
 
   getColor(color?: string){
@@ -40,7 +44,7 @@ export class HomeTopicsComponent implements OnInit {
   nameColor(data: TopicSubcategoryModel[]){
     let name = '';
     if(data.length > 0){
-     name = data[0].subcategory?.category?.color!;
+     name = data[0].subcategory.category.color.name;
     }
     return name
   }
@@ -48,7 +52,7 @@ export class HomeTopicsComponent implements OnInit {
   onPageChange(event: PagePrime){
     this.optionsPage.page = event.page + 1;
 
-    this.homeServices.topicsPagination(this.optionsPage);
+    // this.homeServices.topicsPagination(this.optionsPage);
   }
 
   filterChange(){
@@ -57,13 +61,17 @@ export class HomeTopicsComponent implements OnInit {
     }else{
       this.optionsPage.filter = ""
     }
-    this.homeServices.topicsPagination(this.optionsPage);
+    // this.homeServices.topicsPagination(this.optionsPage);
   }
 
   categoryChange(){
     console.log('foi')
     this.optionsPage.categoryId = this.categorySelect ? this.categorySelect.id! : 0
-    this.homeServices.topicsPagination(this.optionsPage);
+    // this.homeServices.topicsPagination(this.optionsPage);
+  }
+
+  createTopic(){
+    const dialogRef = this.dialog.open(TopicComponent)
   }
 
 }

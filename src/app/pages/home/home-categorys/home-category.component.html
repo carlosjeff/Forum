@@ -1,24 +1,24 @@
 <div class="category"  *ngFor="let item of categorys">
 
-  <div class="category__icon" [ngStyle]="{'background-color': getColor(item.color)}">
+  <div class="category__icon" [ngStyle]="{'background-color': getColor(item.color.name)}">
     <span class="icon icon-chats"></span>
 
   </div>
 
   <div class="category__content">
 
-    <h2 class="category__name" [ngStyle]="{'color': getColor(item.color)}">{{item.name | uppercase}}</h2>
+    <h2 class="category__name" [ngStyle]="{'color': getColor(item.color.name)}">{{item.name | uppercase}}</h2>
 
     <div class="category__tags">
-      <app-chip *ngFor="let subItem of item.subcategorys" [name]="subItem.name!" [color]=" getColor(item.color)"></app-chip>
+      <app-chip *ngFor="let subItem of item.subcategorys" [name]="subItem.name!" [color]=" getColor(item.color.name)"></app-chip>
     </div>
 
 
 
   </div>
   <div class="category__topic">
-    	<p class="category__topic-number" [ngStyle]="{'color': getColor(item.color)}">{{item.qtdTopics}}</p>
-    	<p>Topicos</p>
+    	<p class="category__topic-number" [ngStyle]="{'color': getColor(item.color.name)}">{{item.subcategorys.length}}</p>
+    	<p>Subcategoria(s)</p>
   </div>
 
 </div>

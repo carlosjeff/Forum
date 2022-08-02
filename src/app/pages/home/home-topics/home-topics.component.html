@@ -10,7 +10,7 @@
     <app-dropdown class="filter__category" [(ngModel)]="categorySelect" [options]="categorys" labelName="name"
       placeholder="Categorias" (change)="categoryChange()"></app-dropdown>
 
-    <button type="button" label="" class="button button-blue">
+    <button type="button" label="" class="button button-blue" (click)="createTopic()">
       <span class="icon icon-plus"></span>
       Criar novo tópico
     </button>
@@ -27,15 +27,15 @@
       <p class="topics__desc">{{'Por ' + (topic.author | titlecase) + ' ' + (topic.date | date)}}</p>
 
       <div class="category__tags">
-        <app-chip *ngFor="let item of topic.subcategorys" [name]="item.subcategory?.name!"
-          [color]=" getColor(item.subcategory?.category?.color)"></app-chip>
+        <app-chip *ngFor="let item of topic.subcategorys" [name]="item.subcategory.name"
+          [color]=" getColor(item.subcategory.category.color.name)"></app-chip>
       </div>
 
 
     </div>
     <div class="topcs__reply">
       <p class="topcs__reply-number" [ngStyle]="{'color': getColor(nameColor(topic.subcategorys!))}">
-        {{topic.replys?.length! > 0 ? topic.replys?.length : 0}}</p>
+        {{topic.replys.length! > 0 ? topic.replys.length : 0}}</p>
       <p>Respostas</p>
     </div>
     <div class="topcs__lastReply">

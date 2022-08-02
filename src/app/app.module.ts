@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginModule } from './pages/login/login.module';
+import { TopicComponent } from './pages/topic/topic.component';
+import { CreateTopicComponent } from './pages/topic/create-topic/create-topic.component';
 
 
 
@@ -25,7 +27,7 @@ import { LoginModule } from './pages/login/login.module';
     HomeModule,
     LoginModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
