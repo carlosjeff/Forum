@@ -11,6 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginModule } from './pages/login/login.module';
 import { TopicComponent } from './pages/topic/topic.component';
 import { CreateTopicComponent } from './pages/topic/create-topic/create-topic.component';
+import { FormsModule } from '@angular/forms';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 
 
@@ -28,6 +30,8 @@ import { CreateTopicComponent } from './pages/topic/create-topic/create-topic.co
     LoginModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FormsModule,
+    AngularEditorModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
